@@ -307,8 +307,12 @@ class Flexi_auth_model extends Flexi_auth_lite_model
 					{
 						$this->update_session_identifier($user_id, $user_data[$column]);
 					}
-					
-					$sql_update[$this->auth->tbl_col_user_account[$key]] = $user_data[$column];
+					if(array_key_exists($key, $this->auth->tbl_col_user_account)){
+		                        	$sql_update[$this->auth->tbl_col_user_account[$key]] = $user_data[$column];
+		                    	}else{
+		                        	$sql_update[$key] = $user_data[$column];
+		                    	}
+					//$sql_update[$this->auth->tbl_col_user_account[$key]] = $user_data[$column];
 				}
 				unset($user_data[$column]);
 			}
