@@ -47,7 +47,7 @@ CREATE TABLE `user_accounts` (
   `uacc_date_last_login` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `uacc_date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `aucc_first_name` varchar(50) NOT NULL DEFAULT '',
-  `aucc_last_name` varchar(50) NOT NULL DEFAULT ''
+  `aucc_last_name` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`uacc_id`),
   UNIQUE KEY `uacc_id` (`uacc_id`),
   KEY `uacc_group_fk` (`uacc_group_fk`),
