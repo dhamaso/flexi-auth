@@ -27,8 +27,8 @@ CREATE TABLE `ci_sessions` (
 -- ----------------------------
 DROP TABLE IF EXISTS `user_accounts`;
 CREATE TABLE `user_accounts` (
-  `uacc_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `uacc_group_fk` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `uacc_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `uacc_group_fk` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `uacc_email` varchar(100) NOT NULL DEFAULT '',
   `uacc_username` varchar(15) NOT NULL DEFAULT '',
   `uacc_password` varchar(60) NOT NULL DEFAULT '',
@@ -65,7 +65,7 @@ CREATE TABLE `user_accounts` (
 -- ----------------------------
 DROP TABLE IF EXISTS `user_groups`;
 CREATE TABLE `user_groups` (
-  `ugrp_id` smallint(5) NOT NULL AUTO_INCREMENT,
+  `ugrp_id` tinyint(3) NOT NULL AUTO_INCREMENT,
   `ugrp_name` varchar(20) NOT NULL DEFAULT '',
   `ugrp_desc` varchar(100) NOT NULL DEFAULT '',
   `ugrp_admin` tinyint(1) NOT NULL DEFAULT '0',
@@ -82,7 +82,7 @@ CREATE TABLE `user_groups` (
 -- ----------------------------
 DROP TABLE IF EXISTS `user_login_sessions`;
 CREATE TABLE `user_login_sessions` (
-  `usess_uacc_fk` int(11) NOT NULL DEFAULT '0',
+  `usess_uacc_fk` mediumint(8) NOT NULL DEFAULT '0',
   `usess_series` varchar(40) NOT NULL DEFAULT '',
   `usess_token` varchar(40) NOT NULL DEFAULT '',
   `usess_login_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -116,7 +116,7 @@ CREATE TABLE `user_privileges` (
 DROP TABLE IF EXISTS `user_privilege_users`;
 CREATE TABLE `user_privilege_users` (
   `upriv_users_id` smallint(5) NOT NULL AUTO_INCREMENT,
-  `upriv_users_uacc_fk` int(11) NOT NULL DEFAULT '0',
+  `upriv_users_uacc_fk` mediumint(8) NOT NULL DEFAULT '0',
   `upriv_users_upriv_fk` smallint(5) NOT NULL DEFAULT '0',
   PRIMARY KEY (`upriv_users_id`),
   UNIQUE KEY `upriv_users_id` (`upriv_users_id`) USING BTREE,
@@ -136,7 +136,7 @@ CREATE TABLE `user_privilege_users` (
 DROP TABLE IF EXISTS `user_privilege_groups`;
 CREATE TABLE `user_privilege_groups` (
   `upriv_groups_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `upriv_groups_ugrp_fk` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `upriv_groups_ugrp_fk` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `upriv_groups_upriv_fk` smallint(5) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`upriv_groups_id`),
   UNIQUE KEY `upriv_groups_id` (`upriv_groups_id`) USING BTREE,
